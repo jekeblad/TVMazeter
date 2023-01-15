@@ -1,0 +1,20 @@
+section.show{
+    display: flex;
+    gap:1em;
+    > .section-header{
+        font-weight: 700;
+        font-size: 1.5em;
+        width: 100%;
+        display: block;
+        margin:0;
+        padding:0;
+    }
+    > img{
+        flex-basis: content;
+    }
+    > div{
+       flex-grow: 1;
+    }
+    flex-wrap: wrap;
+    margin: var(--margin-l) 0;
+}

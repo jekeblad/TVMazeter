@@ -1,0 +1,23 @@
+:root{
+    --margin-s:1em;
+    --margin-m:1.5em;
+    --margin-l:2em;
+    --restricted-width:80rem;
+    --restricted-padding:1rem;
+}
+
+header {
+    padding: 0.5em;
+    h1{
+        font-size: 3em;
+        font-weight: 400;
+    }
+    background: #aaf;
+    margin-bottom:var(--margin-l);
+    border-bottom:2px solid #338;
+    box-shadow: 0 0 0 #338;
+}
+
+.content{
+    margin:var(--margin-l) 0;
+}
