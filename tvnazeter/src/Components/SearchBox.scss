@@ -1,0 +1,20 @@
+.searchBoxContainer{
+    margin:var(--margin-m) auto;
+    max-width: var(--restricted-width);
+    padding: 0 var(--restricted-padding);
+
+    display: flex;
+    gap: var(--margin-s);
+    input, button{
+        font-size: 1.8em;
+    }
+
+    input{flex-grow: 10; flex-shrink: 10; border-radius: 0.2em; border:#aaa 1px solid}
+    button{flex-grow: 1; flex-shrink: 1; border-radius: 0.2em; border:#aaa 1px solid }
+}
+
+@media screen and (max-width: 520px){
+    .searchBoxContainer{
+        flex-direction: column;
+    }
+}
