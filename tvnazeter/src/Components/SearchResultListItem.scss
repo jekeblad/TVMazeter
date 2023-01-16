@@ -1,0 +1,46 @@
+section.show{
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    > .header {
+        width: 100%;
+        h2{
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.5em;
+            margin:0;
+            padding:0;
+        }
+        .runInfo{
+            font-size: 0.8em; display: inline-block; margin:0 1em;
+        }
+    }
+    > .data{
+        flex-direction: row;
+        display: flex;
+        gap:1em;
+        img{
+            flex-grow: 0;
+            max-height: 295px;
+            max-width: 210px;
+        }
+        div{
+            
+            flex-grow: 1;
+        }
+    }
+
+    @media screen and (max-width: 520px){
+        .data{
+            flex-direction: column;
+        }
+    }
+    margin: var(--margin-l) 0;
+}
+
+.detailsContainer{
+    margin:var(--margin-m) auto;
+    max-width: var(--restricted-width);
+    padding: 0 var(--restricted-padding);
+}
+

@@ -1,0 +1,25 @@
+.searchResultContainer{
+
+    margin:var(--margin-m) auto;
+    max-width: var(--restricted-width);
+    padding: 0 var(--restricted-padding);
+
+    .back{
+        margin:var(--margin-s) 0;
+        font-size: 1.5em;
+        font-style: italic;
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+div.status{
+    padding: 0 var(--restricted-padding);
+}
+
+div.error{
+    margin:var(--margin-s);
+    padding: var(--restricted-padding);
+    color:red;
+    border:1px solid red;
+}

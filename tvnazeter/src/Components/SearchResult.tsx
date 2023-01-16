@@ -1,27 +1,24 @@
-import React, { FC, PropsWithChildren, useState } from 'react';
-import mazeSearch from '../Hooks/mazeSearch';
-import useMazeSearch from '../Hooks/mazeSearch';
-import SearchListItem from './SearchListItem';
+import { FC } from 'react';
+
+import SearchListItem from './SearchResultListItem';
 import "./SearchResult.scss";
+import useFavourites from '../Hooks/favourites'
+import { MazeSearch } from '../Models/MazeAPIModels';
 
-const SearchResult:FC<PropsWithChildren<{}>> = (props:PropsWithChildren<{}>) => {
+interface IProps{
+    searchResult:MazeSearch.SearchItem[],
+    onShowDetails : (id:string) => void;
+}
 
-    const [searchTerm,setSearchTerm] = useState("");
-    const {searchResult, isSearching, search} = useMazeSearch();
-    console.log(searchResult);
-    return <>
-        <div className="searchBoxContainer">
-            <input type="text" value={searchTerm} placeholder='Skriv in din söktext här' onChange={(e) => setSearchTerm(e.target.value)}/>
-            <button onClick={() => { search(searchTerm);  }}>Skicka</button>
-        </div>
-        <div className="searchResultContainer">
-            {isSearching 
-                ? <>Is Searching</>
-                : <> { searchResult.map( item => { return <SearchListItem data={item}/> } )}
-                        <button className="fetchNext">Fetch next</button>
-                    </>
-            }
-        </div>
-    </>
+const SearchResult:FC<IProps> = (props) => {
+    const {searchResult, onShowDetails } = props;
+    const {isFavourite, toggleFavourite} = useFavourites("shows");
+    const items = searchResult.map( item => <SearchListItem 
+        onShowDetails={onShowDetails} 
+        isFavourite={isFavourite} 
+        key={item.show.id} 
+        data={item} 
+        toggleFavourite={() => toggleFavourite(item.show.id.toString(), {title:item.show.name, link:item.show.url})} />);
+    return <div className="searchResultContainer">{ items }</div>    
 }
 export default SearchResult;
