@@ -7,19 +7,16 @@ interface IProps{
     onShowDetails:(id:string) => void 
 }
 
-interface IShowPayload{
-    title:string;
-    image:string;
-}
+
 
 const Favourites:FC<IProps> = (props) => {
     const {onShowDetails} = props;
-    const {isFavourite, toggleFavourite, favourites} = useFavourites<IShowPayload>("shows");
+    const {isFavourite, toggleFavourite, favourites} = useFavourites("shows");
     return <div className="favourites">
         <h1>Favourite shows</h1>
-        {favourites.map(f =><section className="show">
-        <div className="header">
-            <img src={f.payload.image|| ""} />
+        {favourites.map(f =><section >
+        <img src={f.payload.image|| ""} />
+        <div>
             <h2>
                 <a href={"/show/" + f.id.toString() } onClick={(e) =>{ e.preventDefault(); onShowDetails(f.id.toString())}}>{f.payload.title} </a>            
                 <span onClick={() => toggleFavourite(f.id, f.payload)}

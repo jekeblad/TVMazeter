@@ -49,26 +49,26 @@ const ShowDetails:FC<IProps> = (props) => {
         </section>
         
         <section>
-        <div className="header">
-          <h1>Cast</h1>
-        </div>
-        <div>
-          <table className="castTable">
-                { show._embedded?.cast.map(c => <tr>
-                    <td>
-                        <img src={c.person.image?.medium || ""}  alt={"image of " + c.person.name} />
-                    </td>
-                    <td>
-                        {c.person.name}
-                    </td>
-                    <td>
-                        as {c.character.name}
-                    </td>
-                </tr>)}
-            </table>
+          <div className="header">
+            <h1>Cast</h1>
           </div>
+          <div>
+            <table className="castTable">
+                  { show._embedded?.cast.map(c => <tr>
+                      <td>
+                          <img src={c.person.image?.medium || ""}  alt={"image of " + c.person.name} />
+                      </td>
+                      <td>
+                          {c.person.name}
+                      </td>
+                      <td>
+                          as {c.character.name}
+                      </td>
+                  </tr>)}
+              </table>
+            </div>
         </section>
         </>
-    : <></>
+    : <section className="showDetails"><span className="loader"></span></section>
 }
 export default ShowDetails;

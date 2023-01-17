@@ -1,56 +1,58 @@
-section.showDetails{
-    display: flex;
-    flex-direction: column;
-    gap:1em;
-    > .header {
-        width: 100%;
-        h2{
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1.5em;
-            margin:0;
-            padding:0;
-            }
-    }
-    > .data{
-        flex-direction: row;
-        display: flex;
-        gap:1em;
-        img{
-            flex-grow: 0;
-            width:100%;
-            max-width: 210px;
-            height: 295px;
-            
-        }
-        div{
-            
-            flex-grow: 1;
-        }
-    }
-
-    @media screen and (max-width: 520px){
-        .data{
-            flex-direction: column;
-        }
-    }
-
-    .tags{
-        margin: var(--margin-s) 0;
-        .tag{
-            padding:0 0.5em;
-            border:1px solid #999;margin-right:0.4em;
-            border-radius: 1em;
-        }
-    }
-    margin: var(--margin-l) 0;
-}
-
 .detailsContainer{
+
     margin:var(--margin-m) auto;
     max-width: var(--restricted-width);
     padding: 0 var(--restricted-padding);
+
+    section.showDetails{
+        display: flex;
+        flex-direction: column;
+        gap:1em;
+        > .header {
+            width: 100%;
+            h2{
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 1.5em;
+                margin:0;
+                padding:0;
+                }
+        }
+        > .data{
+            flex-direction: row;
+            display: flex;
+            gap:1em;
+            img{
+                flex-grow: 0;
+                width:100%;
+                max-width: 210px;
+                height: 295px;
+                
+            }
+            div{
+                
+                flex-grow: 1;
+            }
+        }
+
+        @media screen and (max-width: 520px){
+            .data{
+                flex-direction: column;
+            }
+        }
+
+        .tags{
+            margin: var(--margin-s) 0;
+            .tag{
+                padding:0 0.5em;
+                border:1px solid #999;margin-right:0.4em;
+                border-radius: 1em;
+            }
+        }
+        margin: var(--margin-l) 0;
+    }
 }
+
 .castTable{
     width:100%
 }

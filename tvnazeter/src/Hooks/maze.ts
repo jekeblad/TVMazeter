@@ -5,15 +5,12 @@ import { MazeSearch } from "../Models/MazeAPIModels";
 
 const apiUrl_Search = "https://api.tvmaze.com/search/shows?q=";
 const apiUrl_Details = "https://api.tvmaze.com/shows/{id}?embed=cast";
-
+var perfomanceTimeout:any;
 const useMazeSearch =  () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isSlow, setIsSlow] = useState(false);
     
-    var perfomanceTimeout:any;
-
     const {data,  isLoading, isError } = useQuery([searchTerm] , () => {
-
         perfomanceTimeout = setTimeout(() => {
             setIsSlow(true);
         }, 1000);

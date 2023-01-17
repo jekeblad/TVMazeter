@@ -18,7 +18,7 @@ const SearchResult:FC<IProps> = (props) => {
         isFavourite={isFavourite} 
         key={item.show.id} 
         data={item} 
-        toggleFavourite={() => toggleFavourite(item.show.id.toString(), {title:item.show.name, link:item.show.url})} />);
+        toggleFavourite={() => toggleFavourite(item.show.id.toString(), {title:item.show.name, image : item.show.image?.medium })} />);
     return <div className="searchResultContainer">{ items }</div>    
 }
 export default SearchResult;

@@ -42,32 +42,6 @@ export module MazeSearch {
         previousepisode: Previousepisode;
     }
 
-    // export interface Show {
-    //     id: number;
-    //     url: string;
-    //     name: string;
-    //     type: string;
-    //     language?: any;
-    //     genres: string[];
-    //     status: string;
-    //     runtime: number;
-    //     averageRuntime: number;
-    //     premiered: string;
-    //     ended?: any;
-    //     officialSite?: any;
-    //     schedule: Schedule;
-    //     rating: Rating;
-    //     weight: number;
-    //     network: Network;
-    //     webChannel?: any;
-    //     dvdCountry?: any;
-    //     externals: Externals;
-    //     image: Image;
-    //     summary: string;
-    //     updated: number;
-    //     _links: Links;
-    // }
-
     export interface Show {
         id: number;
         url: string;

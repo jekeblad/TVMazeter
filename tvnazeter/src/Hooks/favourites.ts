@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
-export default<T> (key:string) => {
+export default (key:string) => {
 
-    interface IFavourite<T>{
+    interface IFavourite{
         id:string;
-        payload:T;
+        payload:IShowPayload;
     }
 
-    const [favourites,setFavorites] = useState<IFavourite<T>[]>(JSON.parse(sessionStorage.getItem(key)|| "[]")); 
+    interface IShowPayload{
+        title:string;
+        image:string;
+    }
+
+    const [favourites,setFavorites] = useState<IFavourite[]>(JSON.parse(sessionStorage.getItem(key)|| "[]")); 
 
     useEffect(() => {
         sessionStorage.setItem(key, JSON.stringify(favourites));   
     },[favourites]);
 
-    const toggleFavourite = (id:string, payload:T) => {
+    const toggleFavourite = (id:string, payload:IShowPayload) => {
         console.log("before",favourites);
         var index = favourites.findIndex(f => f.id == id);
         if(index >= 0){

@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+:root{
+  --margin-s:1.5rem;
+  --margin-m:2rem;
+  --margin-l:2.5rem;
+  --restricted-width:80rem;
+  --restricted-padding:1rem;
+}
 
 @font-face { font-family: 'SourceSansPro'; src: URL('../public/style/fonts/SourceSansPro-Black.ttf') format('truetype') ; font-weight: 800; }
 @font-face { font-family: 'SourceSansPro'; src: URL('../public/style/fonts/SourceSansPro-BlackItalic.ttf') format('truetype') ; font-style: italic; font-weight: 800; }
@@ -27,5 +34,18 @@ code {
 @font-face { font-family: 'SourceSansPro'; src: URL('../public/style/fonts/SourceSansPro-ExtraLightItalic.ttf') format('truetype') ; font-weight: 100; font-style: italic; }
 
 h1{
-  font-family: SourceSansPro, 'Times New Roman', Times, serif;
+  font-family: SourceSansPro, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid rgb(255, 191, 0);
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
