@@ -1,6 +1,5 @@
-import React, { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
-import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import "./Layout.scss";
 

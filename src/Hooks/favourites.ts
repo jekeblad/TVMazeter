@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-export default (key:string) => {
+const FavouriteHook = (key:string) => {
 
     interface IFavourite{
         id:string;
@@ -14,11 +14,12 @@ export default (key:string) => {
     const [favourites,setFavorites] = useState<IFavourite[]>(JSON.parse(localStorage.getItem(key)|| "[]")); 
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(favourites));   
-    },[favourites]);
+        if(key) 
+            localStorage.setItem(key, JSON.stringify(favourites));   
+    },[favourites, key]);
 
     const toggleFavourite = (id:string, payload:IShowPayload) => {
-        var index = favourites.findIndex(f => f.id == id);
+        var index = favourites.findIndex(f => f.id === id);
         if(index >= 0){
             favourites.splice(index,1);
         }
@@ -28,7 +29,7 @@ export default (key:string) => {
         setFavorites([...favourites]);
     };
     const isFavourite = (id:string) => {
-        return favourites.findIndex(f => f.id == id) >= 0;
+        return favourites.findIndex(f => f.id === id) >= 0;
     }
     
     return {
@@ -37,3 +38,5 @@ export default (key:string) => {
        favourites
     }
 };
+
+export default FavouriteHook;

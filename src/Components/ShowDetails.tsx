@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useParams } from 'react-router-dom';
 import { useMazeShow } from '../Hooks/mazeAPI';
 import "./ShowDetails.scss";
 import Star from './Star';
@@ -40,9 +39,8 @@ const ShowDetails:FC<IProps> = (props) => {
                 }><Star isFilled={isFavourite(show.id.toString())}  /></span></h2>
             </div>
             <div className="data">
-              <img src={show.image?.original} />
+              <img src={show.image?.original} alt={"image showing the tv show " + show.name}  />
               <div className="info-container">
-              
                 <div dangerouslySetInnerHTML={{__html: cleanup(show.summary)}}></div>
                 <div className="tags">
                   {(show.genres ?? []).map(g => <span key={g} className="tag">{g}</span>)}

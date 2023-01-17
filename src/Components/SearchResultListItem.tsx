@@ -20,17 +20,19 @@ const SearchListItem:FC<PropsWithChildren<IProps>> = (props:PropsWithChildren<IP
     
     const {isFavourite, toggleFavourite, onShowDetails} = props;
 
-    const showId = props.data.show.id.toString();
     
-    const toggleFavouriteStatusTitle = isFavourite(props.data.show.id.toString()) 
+    const show = props.data.show
+    const showId = show.id.toString();
+    
+    const toggleFavouriteStatusTitle = isFavourite(showId) 
           ? "Remove from favourites" 
           : "Add as favourite";
 
     const onLinkToDetailsClick:React.MouseEventHandler<HTMLAnchorElement> = (e) =>{ e.preventDefault(); onShowDetails(showId)};
 
     const ShowTitleContent = <>
-      <a title={'show_' + showId} href={"/show/" + showId } onClick={onLinkToDetailsClick}>{props.data.show.name} </a>
-      <span className="runInfo">{props.data.show.premiered?.split("-")[0] ?? ""} - {props.data.show.ended?.split("-")[0] || ""} </span>
+      <a title={'show_' + showId} href={"/show/" + showId } onClick={onLinkToDetailsClick}>{show.name} </a>
+      <span className="runInfo">{show.premiered?.split("-")[0] ?? ""} - {show.ended?.split("-")[0] || ""} </span>
       <span onClick={() => toggleFavourite(showId)} title={toggleFavouriteStatusTitle}>
         <Star isFilled={isFavourite(showId)}  />
       </span>
@@ -41,9 +43,9 @@ const SearchListItem:FC<PropsWithChildren<IProps>> = (props:PropsWithChildren<IP
           <h2>{ShowTitleContent}</h2>
         </div>
         <div className="data">
-          <img src={props.data.show.image?.medium || ""} />
+          <img src={show.image?.medium || ""} alt={"image showing the tv show " + show.name}/>
           <div className="info-container">
-            <div dangerouslySetInnerHTML={{__html: SanitizeHtmlString(props.data.show.summary)}}></div>
+            <div dangerouslySetInnerHTML={{__html: SanitizeHtmlString(show.summary)}}></div>
           </div>
         </div>
       </section>
