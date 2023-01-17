@@ -17,18 +17,3 @@ div.status{
     padding: 0 var(--restricted-padding);
 }
 
-div.error{
-    max-width: var(--restricted-width);
-    margin:var(--margin-s) auto;
-    padding: var(--restricted-padding);
-    color:red;
-    border:1px solid red;
-}
-
-div.warning{
-    max-width: var(--restricted-width);
-    margin:var(--margin-s) auto;
-    padding: var(--restricted-padding);
-    color:rgb(255, 230, 0);
-    border:1px solid rgb(255, 230, 0);
-}

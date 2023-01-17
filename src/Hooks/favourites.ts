@@ -18,7 +18,6 @@ export default (key:string) => {
     },[favourites]);
 
     const toggleFavourite = (id:string, payload:IShowPayload) => {
-        console.log("before",favourites);
         var index = favourites.findIndex(f => f.id == id);
         if(index >= 0){
             favourites.splice(index,1);
@@ -26,7 +25,6 @@ export default (key:string) => {
         else{
             favourites.push({id, payload:payload});
         }
-        console.log("after", favourites);
         setFavorites([...favourites]);
     };
     const isFavourite = (id:string) => {

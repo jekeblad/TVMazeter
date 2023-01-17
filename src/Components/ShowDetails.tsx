@@ -24,51 +24,56 @@ const ShowDetails:FC<IProps> = (props) => {
     }
 
     const { showId,toggleFavourite, isFavourite } = props;
-    var {show, isFetching} = useMazeShow(showId); 
-    return !isFetching 
-    ? <><section className="showDetails">
-        <div className="header">
-          <h1>{show.name}<span 
-            onClick={() => toggleFavourite(show.id.toString(), {title:show.name, link:show.url} )}
-            title={isFavourite(show.id.toString()) 
-              ? "remove favourite" 
-              : "add as favourite"
-            }><Star isFilled={isFavourite(show.id.toString())}  /></span></h1>
-        </div>
-        <div className="data">
-          <img src={show.image.medium} />
-          <div className="info-container">
-           
-            <div dangerouslySetInnerHTML={{__html: cleanup(show.summary)}}></div>
-            <div className="tags">
-              {(show.genres ?? []).map(g => <span className="tag">{g}</span>)}
-            </div>
-          </div>
-        </div>
-       
-        </section>
-        
-        <section>
+    var {show, isFetching, isError,isSlow} = useMazeShow(showId); 
+    return<>
+            { isError && <div className="error">Error fetching show from the TV Maze API</div> }
+            { isSlow && <div className="warning">Communication with the TV Maze API takes a long time</div> }
+      { !isFetching && !isError
+      ? <><section className="showDetails">
           <div className="header">
-            <h1>Cast</h1>
+            <h1>{show.name}<span 
+              onClick={() => toggleFavourite(show.id.toString(), {title:show.name, link:show.url} )}
+              title={isFavourite(show.id.toString()) 
+                ? "remove favourite" 
+                : "add as favourite"
+              }><Star isFilled={isFavourite(show.id.toString())}  /></span></h1>
           </div>
-          <div>
-            <table className="castTable">
-                  { show._embedded?.cast.map(c => <tr>
-                      <td>
-                          <img src={c.person.image?.medium || ""}  alt={"image of " + c.person.name} />
-                      </td>
-                      <td>
-                          {c.person.name}
-                      </td>
-                      <td>
-                          as {c.character.name}
-                      </td>
-                  </tr>)}
-              </table>
+          <div className="data">
+            <img src={show.image?.original} />
+            <div className="info-container">
+            
+              <div dangerouslySetInnerHTML={{__html: cleanup(show.summary)}}></div>
+              <div className="tags">
+                {(show.genres ?? []).map(g => <span className="tag">{g}</span>)}
+              </div>
             </div>
-        </section>
-        </>
-    : <section className="showDetails"><span className="loader"></span></section>
+          </div>
+        
+          </section>
+          
+          <section>
+            <div className="header">
+              <h1>Cast</h1>
+            </div>
+            <div>
+              <table className="castTable">
+                    { show._embedded?.cast.map(c => <tr>
+                        <td>
+                            <img src={c.person.image?.medium || ""}  alt={"image of " + c.person.name} />
+                        </td>
+                        <td>
+                            {c.person.name}
+                        </td>
+                        <td>
+                            as {c.character.name}
+                        </td>
+                    </tr>)}
+                </table>
+              </div>
+          </section>
+          </>
+      : isFetching && !isError && <span className="loader"></span>
+      }
+    </>
 }
 export default ShowDetails;

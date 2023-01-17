@@ -37,6 +37,7 @@ const SearchPage:FC<IProps> = (props) => {
         { isError && <div className="error">Error connecting to TV Maze API</div> }
         { isSlow && <div className="warning">Communication with the TV Maze API takes a long time</div> }
         <SearchBox onSearchButtonClick={onSearch} initialSearchTerm={searchTerm} isSearching={isSearching} />
+        { isSearching && <span className="loader"></span>}
         { searchResult && <SearchResult searchResult={searchResult} onShowDetails={(id) => {navigate('/show/' + id )}}  /> }
       </div>
       
