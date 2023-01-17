@@ -172,8 +172,4 @@ export module MazeSearch {
     export interface Embedded {
         cast: Cast[];
     }
-
-    
-
 }
-

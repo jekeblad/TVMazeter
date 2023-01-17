@@ -39,6 +39,8 @@ h1{
   sans-serif;
 }
 
+button{border-radius: 0.2em; border:#aaa 1px solid }
+
 .loader {
   margin: var(--margin-l) auto;
   width: 48px;

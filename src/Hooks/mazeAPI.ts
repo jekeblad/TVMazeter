@@ -24,7 +24,9 @@ const useMazeSearch =  () => {
         onSettled : () => {
             clearTimeout(perfomanceTimeout);
             setIsSlow(false);
-        } 
+        },
+        staleTime: 10 * (60 * 1000),
+        cacheTime: 9 * (60 * 1000)
     });
        
     return {
@@ -54,6 +56,8 @@ const useMazeShow = (showId:string) => {
         onError : (error) => {
             console.error(error);
         },
+        staleTime: 10 * (60 * 1000),
+        cacheTime: 9 * (60 * 1000)
     });
        
     return {

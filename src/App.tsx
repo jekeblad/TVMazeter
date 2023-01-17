@@ -15,7 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <Layout>
             <Routes>
@@ -26,7 +25,6 @@ function App() {
             </Routes>
           </Layout>
         </QueryClientProvider>
-      </BrowserRouter>
     </div>
   );
 }

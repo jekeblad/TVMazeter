@@ -11,10 +11,10 @@ export default (key:string) => {
         image:string;
     }
 
-    const [favourites,setFavorites] = useState<IFavourite[]>(JSON.parse(sessionStorage.getItem(key)|| "[]")); 
+    const [favourites,setFavorites] = useState<IFavourite[]>(JSON.parse(localStorage.getItem(key)|| "[]")); 
 
     useEffect(() => {
-        sessionStorage.setItem(key, JSON.stringify(favourites));   
+        localStorage.setItem(key, JSON.stringify(favourites));   
     },[favourites]);
 
     const toggleFavourite = (id:string, payload:IShowPayload) => {

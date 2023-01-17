@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import "./SearchPage.scss";
 import SearchResult from './SearchResult';
 import ShowDetails from './ShowDetails';
-import { useMazeSearch } from '../Hooks/maze';
+import { useMazeSearch } from '../Hooks/mazeAPI';
 import SearchBox from './SearchBox';
 import useFavourites from '../Hooks/favourites'
 
@@ -29,17 +29,17 @@ const SearchPage:FC<IProps> = (props) => {
 
     if(id)
       return <div className="searchResultContainer">
-        <a href="#" className="back" onClick={(e) => { e.preventDefault(); navigateBack(); }}>{"<"} Back</a>
+        <button className="back" onClick={(e) => { e.preventDefault(); navigateBack(); }}>{"<< Back"}</button>
         <ShowDetails showId={id} isFavourite={isFavourite} toggleFavourite={(id,payload ) => toggleFavourite(id, payload)} />
       </div>
     else 
-      return <div>
+      return <>
         { isError && <div className="error">Error connecting to TV Maze API</div> }
         { isSlow && <div className="warning">Communication with the TV Maze API takes a long time</div> }
         <SearchBox onSearchButtonClick={onSearch} initialSearchTerm={searchTerm} isSearching={isSearching} />
-        { isSearching && <span className="loader"></span>}
+        { isSearching && <span className="loader" data-testid="loader"></span>}
         { searchResult && <SearchResult searchResult={searchResult} onShowDetails={(id) => {navigate('/show/' + id )}}  /> }
-      </div>
+      </>
       
 }
 

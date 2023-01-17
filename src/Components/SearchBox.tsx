@@ -16,11 +16,10 @@ const SearchResult:FC<IProps> = (props) => {
     
     const [searchTerm, setSearchTerm] = useState(initialSearchTerm ?? "");
 
-    return <>
-        <div className="searchBoxContainer">
-            <input type="text" value={searchTerm} placeholder='Enter search term here' onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={(e) => e.key == "Enter" && onSearchButtonClick(searchTerm) }/>
-            <button onClick={() => { onSearchButtonClick(searchTerm);  }} disabled={isSearching}>{isSearching ? "Searching...": "Search"}</button>
-        </div>
-    </>
+    return <div className="searchBoxContainer">
+        <input data-testid="searchTermInput" type="text" value={searchTerm} placeholder='Enter search term here' onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={(e) => e.key === "Enter" && onSearchButtonClick(searchTerm) }/>
+        <button data-testid="submitButton" onClick={() => { onSearchButtonClick(searchTerm);  }} disabled={isSearching}>{isSearching ? "Searching...": "Search"}</button>
+    </div>
+   
 }
 export default SearchResult;
