@@ -1,12 +1,18 @@
 ## To run the site localy
 In the project directory, you can run:
 
+### `npm install`
+Fetches and installs all dependencies needed for running the development mode server. This has to be done 
+
 ### `npm start`
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm test`
 Launches the test runner in the interactive watch mode.\
+
+Note that this solution requires you to have installed NodeJS 
+
 
 ## Comments about the solution
 
