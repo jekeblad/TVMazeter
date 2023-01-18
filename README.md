@@ -12,7 +12,8 @@ Launches the test runner in the interactive watch mode.\
 
 ### Styling
 All styling is done using css/scss and common html elements - If larger forms should be used, then maybe a library would be a better fit.
-The UI design has been made to fit both computers and handhelds with some media queries for styles targetting small screens. 
+The UI design has been made to fit both computers and handhelds with some media queries for styles targetting small screens.
+The app is missing accessibility adaptation (aria labelling etc) which could be a potential improvement. 
 
 ### Data communication and management
 All data communication is done using React Query mainly for simpler caching, but also for abstracting away some error and state management.
