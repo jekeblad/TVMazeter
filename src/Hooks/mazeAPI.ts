@@ -15,7 +15,7 @@ const useMazeSearch =  () => {
         perfomanceTimeout = setTimeout(() => {
             setIsSlow(true);
         }, 3000);
-        return fetch(apiUrl_Search + searchTerm).then(data => data.json());
+        return fetch(apiUrl_Search + encodeURIComponent(searchTerm)).then(data => data.json());
     }, { 
         enabled: !!searchTerm, 
         onError : (error) => {
@@ -47,7 +47,7 @@ const useMazeShow = (showId:string) => {
         perfomanceTimeout_single = setTimeout(() => {
             setIsSlow(true);
         }, 3000);
-        return fetch(apiUrl_Details.replace("{id}", showId.toString())).then(data => data.json());
+        return fetch(apiUrl_Details.replace("{id}", encodeURIComponent(showId.toString()))).then(data => data.json());
     },{
         onSettled : () => {
             clearTimeout(perfomanceTimeout_single);
