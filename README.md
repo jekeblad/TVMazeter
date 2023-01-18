@@ -1,4 +1,4 @@
-## To run the site localy
+## To run the site locally
 In the project directory, you can run:
 
 ### `npm install`
